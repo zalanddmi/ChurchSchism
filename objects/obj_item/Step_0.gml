@@ -7,7 +7,8 @@ if (mouse_check_button_pressed(mb_left)) {
                 // Создаем структуру данных для предмета
                 var item_data = {
                     sprite: sprite_index,  // Сохраняем спрайт предмета
-                    type: "first aid kit"  // Пример типа предмета, можно менять под разные предметы
+                    type: "FAK",         // Тип предмета
+                    description: "First aid kit"  // Описание предмета
                 };
                 
                 // Сохраняем данные о предмете в инвентарь
