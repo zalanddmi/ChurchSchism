@@ -1,6 +1,3 @@
-/// @description Вставьте описание здесь
-// Вы можете записать свой код в этом редакторе
-
 // Получаем координаты камеры
 var cam_x = camera_get_view_x(view_camera[0]);
 var cam_y = camera_get_view_y(view_camera[0]);
@@ -17,9 +14,18 @@ for (var i = 0; i < global.slots; i++) {
     // Отрисовка слота
     draw_sprite(spr_inventory_item, 0, slot_x, slot_y);
 
-    // Отрисовка предмета в слоте, если он есть
+    // Если в слоте есть предмет, отрисовываем его спрайт
     if (global.inventory[i] != noone) {
-        var item = global.inventory[i];
-        draw_sprite(item.sprite_index, 0, slot_x, slot_y);
+        var item = global.inventory[i]; // Получаем данные о предмете
+        
+        // Считаем координаты для центрирования предмета в ячейке
+        var item_sprite_width = sprite_get_width(item.sprite);
+        var item_sprite_height = sprite_get_height(item.sprite);
+        
+        var centered_x = slot_x + (64 / 2) - (item_sprite_width / 2); // 64 — размер слота
+        var centered_y = slot_y + (64 / 2) - (item_sprite_height / 2);
+        
+        // Рисуем спрайт предмета в центре слота
+        draw_sprite(item.sprite, 0, centered_x, centered_y);
     }
 }
